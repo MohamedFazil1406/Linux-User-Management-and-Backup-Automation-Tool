@@ -61,6 +61,29 @@ list_user(){
 	cut -d: -f1 /etc/passwd
 }
 
+backup_user() {
+
+    read -p "Enter username to backup: " username
+
+    HOME_DIR="/home/$username"
+
+    if [ ! -d "$HOME_DIR" ]; then
+
+        echo "Home directory does not exist"
+        return
+
+    fi
+
+    timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+
+    backup_file="$BACKUP_DIR/${username}_${timestamp}.tar.gz"
+
+    tar -czf "$backup_file" "$HOME_DIR"
+
+    echo "Backup created:"
+    echo "$backup_file"
+}
+
 echo "================================"
 echo " Linux User & Backup Manager"
 echo "================================"
@@ -100,7 +123,7 @@ case $choice in
         ;;
 
     6)
-        echo "Backup selected"
+        backup_user
         ;;
 
     7)
