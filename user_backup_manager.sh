@@ -54,6 +54,12 @@ add_user_to_group() {
     fi
 }
 
+list_user(){
+
+	echo "Linux user"
+
+	cut -d: -f1 /etc/passwd
+}
 
 echo "================================"
 echo " Linux User & Backup Manager"
@@ -90,7 +96,7 @@ case $choice in
         ;;
 
     5)
-        echo "List users selected"
+        list_user
         ;;
 
     6)
