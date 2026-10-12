@@ -27,6 +27,20 @@ delete_user(){
 
 }
 
+create_group(){
+
+	read -p "Enter the group name: " groupuser
+
+	if getent groupuser > /dev/null; then
+		echo "group alredy existed"
+
+	else
+		sudo groupadd "$groupuser"
+		echo "Group $groupuser is created successfully"
+	fi	
+}
+
+
 echo "================================"
 echo " Linux User & Backup Manager"
 echo "================================"
@@ -54,7 +68,7 @@ case $choice in
         ;;
 
     3)
-        echo "Create group selected"
+        create_group
         ;;
 
     4)
