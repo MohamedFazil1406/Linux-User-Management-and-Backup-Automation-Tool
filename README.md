@@ -45,7 +45,7 @@ user-management/
 Clone the repository:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/MohamedFazil1406/Linux-User-Management-and-Backup-Automation-Tool.git
 ```
 
 Move into the project directory:
