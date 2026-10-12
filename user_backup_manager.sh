@@ -40,6 +40,20 @@ create_group(){
 	fi	
 }
 
+add_user_to_group() {
+
+    read -p "Enter username: " username
+    read -p "Enter group name: " groupname
+
+    sudo usermod -aG "$groupname" "$username"
+
+    if [ $? -eq 0 ]; then
+        echo "$username added to $groupname successfully"
+    else
+        echo "Failed to add $username to $groupname"
+    fi
+}
+
 
 echo "================================"
 echo " Linux User & Backup Manager"
@@ -72,7 +86,7 @@ case $choice in
         ;;
 
     4)
-        echo "Add user to group selected"
+        add_user_to_group
         ;;
 
     5)
